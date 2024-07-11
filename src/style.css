@@ -1,283 +1,178 @@
-@font-face {
-  font-display: swap;
-  font-family: "Graduate";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./assets/fonts/graduate-v17-latin-regular.woff2") format("woff2");
+*{
+    margin: 0;
+    padding: 0;
 }
-/* archivo-black-regular - latin */
-@font-face {
-  font-display: swap;
-  font-family: "Archivo Black";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./assets/fonts/archivo-black-v21-latin-regular.woff2")
-    format("woff2");
+body{
+    background-image: url(./assets/images/home/background-home-desktop.jpg);
+    background-repeat: no-repeat;
+    width: 100vw;
+    min-height: 100vh;
 }
-/* nanum-gothic-coding-regular - latin */
-@font-face {
-  font-display: swap;
-  font-family: "Nanum Gothic Coding";
-  font-style: normal;
-  font-weight: 300;
-  src: url("./assets/fonts/nanum-gothic-coding-v21-latin-regular.woff2")
-    format("woff2");
+ul{
+    list-style: none;
 }
-/* germania-one-regular - latin */
-@font-face {
-  font-display: swap;
-  font-family: "Germania One";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./assets/fonts/germania-one-v20-latin-regular.woff2")
-    format("woff2");
+a{
+     text-decoration: none;
 }
-/* share-tech-mono-regular - latin */
-@font-face {
-  font-display: swap;
-  font-family: "Share Tech Mono";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./assets/fonts/share-tech-mono-v15-latin-regular.woff2")
-    format("woff2");
+.home-page-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding-top:0.5rem;
+   }
+   /* homepage link style */
+.home-page-nav > li > button{
+    border: none;
+    max-width: 150px;
+    padding-block: 1.5rem;
+    letter-spacing: 1px;
+    background-color: inherit;
+    color: white;
+    text-align: start;
 }
-* {
-  margin: 0;
+.nav-border{
+    width: 100px;
+    height: 1px;
+    position: absolute;
+    left: 30%;
+    bottom: 0;
+    height: 2px;
+    width: 50%;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    display: none;
+   }
+.home-page-nav > li >button:hover ~ .nav-border{
+    display: block;
 }
-body {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #000000;
-  background-image: url(./assets/images/set-ships.jpg);
-  font-family: "Graduate", "Share Tech Mono", "Germania One", monospace, Arial,
-    Helvetica, sans-serif;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: inherit;
+.home-page-nav > li{
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+    gap: .5rem;
+  
+    padding-inline:clamp(1rem,2vw,1.2rem);
+    animation: navSlide 1s ease-in-out;
+ }
+ .home-page-nav{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3.5rem;
+ }
+ 
+.logo{
+    width: 1rem;
+    aspect-ratio: 1;
+    background-image: url(./assets/images/icons/logo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    padding: 2rem;
+
 }
-button {
-  cursor: pointer;
-  letter-spacing: 1px;
+/* style for mobile nav */
+.open-nav,.close-nav{
+    display: none;
+    position: absolute;
+    right: 0;
+    top:3%;
+   width: 2rem;
+    background-color: inherit;
+    transform: translateX(-10%);
+    aspect-ratio: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    
 }
-/*intro page*/
-.intro-page {
-  display: flex;
-  flex-direction: column;
-  gap: 20%;
-  background-color: black;
-  height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  background-image: url("./assets/images/ships.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.open-nav{
+    background-image: url(./assets/images/icons/icon-hamburger.svg);
 }
-.header {
-  padding: 1.5rem;
-  background-color: rgb(15, 15, 15);
-  color: aliceblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all ease-in-out 2s;
+.close-nav{
+  background-image: url(./assets/images/icons/icon-close.svg);
+}
+.open-nav{
+    display: block;
+}
+.hr-line{
+    display: none;
+    position: relative;
+    left: 1rem;
+    width: 40%;
+    height: 2px;
+    background-color: rgb(130, 130, 130);
+}
+.page-links{
+    background-color: hsla(0, 2%, 47%, 0.2);
+}
+@keyframes navSlide{
+    0%{
+        opacity: 0.5;
+        transform: translateX(20%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+/* links holder for mobile nav */
+[data-nav-links="true"]{
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    color: white;
+    border-radius: 0.2rem;
+    padding-inline: 1rem;
+   }
+[data-nav-links="false"]{
+    opacity: 0;
+    display: none;
+}
+/* media query for mobile */
+  /* @media (max-width:500px)  {
+    .home-page-header{
+        align-items: start;
+    }
+     .home-page-nav > li{
+        position: relative;
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+        padding-inline:clamp(1rem,2vw,1.2rem);
+      animation: navSlide 1s ease-in-out;
+     } 
+   
+   
+   .home-page-nav{
+       flex-direction: column;
+       margin-top: 3.5rem;
+    }
+    .open-nav{
+        display: block;
+    }
+    .hr-line{
+        display: none;
+    } 
+} */
+/* media query for tab */
+@media (min-width:500px) {
+    .home-page-header{
+         align-items: center;
+    }
+    .home-page-nav{
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0;
+     }
+    .home-page-nav > li{
+        flex-direction: row;
+        align-items: center;
+    }
+     .open-nav{
+        display: none;
+    }
+    .hr-line{
+        display: block;
+    } 
+    
 }
 
-.logo {
-  font-family: "Archivo Black";
-  letter-spacing: 0.3rem;
-  font-size: 2.3rem;
-  font-weight: 300;
-  text-shadow: 0 1px blue;
-  transition: all ease-in-out 2s;
-}
-.logo:hover {
-  color: yellow;
-  transform: scale(1.2);
-}
-.game-options {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.game-option-btns {
-  padding: 1rem;
-  border: 2px solid white;
-  border-radius: 0.3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  font-family: "Nanum Gothic Coding";
-  text-shadow: -1px -2px 2px #0000007d;
-  transition: all ease-in-out 1s;
-  letter-spacing: 0.2rem;
-}
-.game-option-btns:hover {
-  border: 2px solid rgb(0, 0, 0);
-}
-.multi-players-btn {
-  background-color: rgb(203, 226, 4);
-  color: rgb(0, 0, 0);
-}
-.single-player-btn {
-  background-color: rgb(22, 145, 0);
-  color: aliceblue;
-}
-
-/*ship placement page*/
-.ships-grid {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: rgb(3 30 70);
-}
-.drag-btn,
-.randomize-btn,
-.play-btn {
-  font-family: "Germania One";
-}
-
-.players-name {
-  display: flex;
-}
-/* count down*/
-.pass-screen {
-  position: absolute;
-  z-index: 1000;
-  width: 100vw;
-  min-height: 100vh;
-  top: 0;
-  background-color: rgb(0, 0, 0);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: "Graduate";
-}
-.counter {
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30%;
-  border-radius: 1rem;
-  border: 0.2rem solid rgb(174, 0, 255);
-  color: brown;
-}
-.counter-board {
-  font-size: 4rem;
-}
-.msg-text {
-  color: beige;
-  font-size: 2rem;
-  padding: 0.5rem;
-}
-/*players board,mini ships board*/
-
-.players-board,
-.mini-ship-holder {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #292929;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 0.4rem;
-}
-
-/*winner modal*/
-.winner-board {
-  background-color: antiquewhite;
-  padding: 1rem;
-}
-.winner-holder {
-  box-shadow: -2px 0px 8px 3px #41cc2f;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.2rem;
-}
-.winner-modal {
-  border: none;
-  width: 20%;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  box-shadow: -2px 0px 8px 3px #000000;
-  position: relative;
-  left: 30%;
-}
-.rematch-btn {
-  border: 2px solid green;
-  border-radius: 3px;
-  padding: 0.3rem;
-  font-weight: 500;
-}
-/*form style*/
-input {
-  font-family: "Germania One";
-}
-.player-name-input {
-  border: none;
-  padding: 0.9rem;
-  border-radius: 0.2rem;
-  background-color: antiquewhite;
-}
-
-.player-name-input:focus ~ .player-one-label {
-  top: 0.3rem;
-  left: 20%;
-  color: #19d500;
-}
-.player-two-label,
-.player-one-label {
-  position: relative;
-  bottom: 2.8rem;
-  left: 1rem;
-  color: #60635f;
-  transition: all 2s;
-}
-.player-name-input:focus ~ .player-two-label {
-  top: 20%;
-  left: 20%;
-  color: #19d500;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  background-color: rgb(39, 34, 34);
-  opacity: 0.8;
-  width: fit-content;
-  padding: 2rem;
-  margin: auto;
-  margin-top: 1rem;
-  border-radius: 1rem;
-  height: 350px;
-  color: antiquewhite;
-  font-family: "Germania One", monospace;
-}
-.input-holder {
-  display: flex;
-  flex-direction: column;
-}
-.submit-btn {
-  padding: 0.4rem;
-  border-radius: 0.3rem;
-  border: none;
-  font-weight: 500;
-  font-family: "Germania One";
-}
-.submit-btn:hover {
-  background-color: yellow;
-}
-.player-turn {
-  text-align: center;
-  font-size: 1.5rem;
-  color: aliceblue;
-  background-color: #000000;
-  opacity: 0.8;
-  padding: 0.5rem;
-}
