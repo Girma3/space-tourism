@@ -6,14 +6,17 @@ body{
     background-image: url(./assets/images/home/background-home-desktop.jpg);
     background-repeat: no-repeat;
     width: 100vw;
-    min-height: 100vh;
-}
+  }
 ul{
-    list-style: none;
+  list-style: none;
 }
 a{
-     text-decoration: none;
+  text-decoration: none;
 }
+button{
+  cursor: pointer;
+}
+
 .home-page-header{
     display: flex;
     justify-content: space-between;
@@ -130,11 +133,10 @@ a{
 /* home page main */
 main{
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-areas: "main";
   justify-items: center;
-  color: white;
-  
-}
+  color: white; 
+ }
 .explore-btn{
   width: 180px;
   aspect-ratio: 1;
@@ -147,14 +149,12 @@ main{
   top:3%;
   left:2.5%;
 }
-
 .big-circle{
   position: relative;
   width: 250px;
   aspect-ratio: 1;
   border-radius: 50%;
- 
-}
+ }
 .big-circle:hover{
   box-shadow: 0 0 3px rgb(241 210 210 / 50%);
  }
@@ -178,6 +178,7 @@ main{
 .intro-par{
   font-size: 1rem;
   text-align: justify;
+  width: 100%;
 }
 .star{
   width: 20px;
@@ -210,11 +211,14 @@ main{
   }
 }
 /* second page (destination) style */
+.current-page-info{
+  display: none;
+}
 .current-page{
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap:0.5rem;
+  padding:1rem ;
 }
 .link-name{
   letter-spacing: 2px;
@@ -279,7 +283,7 @@ main{
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    animation: rotatePlanet 60s ease-in-out infinite forwards; 
+    animation: rotatePlanet 50s ease-in-out infinite forwards; 
     }
  @keyframes rotatePlanet{
   0%{
@@ -290,9 +294,73 @@ main{
   }
 
  }
+ /* third page style */
+ .crew-name{
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  word-wrap: break-word;
+ }
+
+.person-info{
+  display: grid;
+  grid-template-areas: 
+  "top"
+  "bottom";
+  padding: 1rem;
+ }
+.person-detail-info{
+    text-align: center;
+  }
+.crew-bio{
+    line-height: 1.5rem;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+  }
+
+ .slider-btn-holder{
+  grid-area: top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  
+ }
+ .slider-btn{
+  padding: 1rem;
+  border: none;
+  aspect-ratio: 1;
+  background-color: grey;
+  border-radius: 50%;
+ }
+ .person-job{
+  font-size: 1.5rem;
+  color:aquamarine;
+ }
+ .crew-image-holder{
+  width: 100%;
+  height: 30vh;
+ }
+ .crew-image{
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
  
+ }
+
 /* media query for large screen */
 @media (min-width:500px) {
+  .home-page-section{
+    width: 50%;
+    grid-area: left;
+    justify-self: start;
+  }
+  .btn-holder{
+    grid-area: right;
+  }
     .home-page-header{
          align-items: center;
     }
@@ -313,25 +381,51 @@ main{
     } 
     /* content main home page */
     main{
-      grid-template-columns: 1fr 1fr;
-      justify-content: center;
-      padding: 3rem;
-      gap: 1rem;
-      
+      display: grid;
+      grid-template-areas:"left right";
+      align-content: center;
     }
     .btn-holder{
-      align-self: center;
-      justify-self: end;
+      width: 50%;
+      align-self: end;
+      justify-self: left;
     }
     /* destination or second page */
     .planet-info-holder{
       display: flex;
       flex-direction: column;
       gap:2rem;
-      
     }
     .planet-image{
       flex-grow: 0.5;
+    }
+    /* third page */
+    .crew-image-holder{
+      grid-area: right;
+     }
+     .crew-image{
+      position: absolute;
+      height: 80%;
+      left: 30%;
+      bottom: 0;
+      background-position: bottom;
+     }
+     .crew-info-holder{
+      grid-area: left;
+      justify-self: start;
+      width: 50%;
+      padding: 1rem;
+     }
+    
+    .person-detail-info{
+      grid-area: top;
+      text-align: start;
+    }
+    .slider-btn-holder{
+      grid-area: bottom;
+    }
+    .current-page-info{
+      display: block;
     }
     
     
