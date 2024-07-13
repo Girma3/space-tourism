@@ -191,7 +191,7 @@ main{
   opacity: 0;
   background: linear-gradient(-45deg, #eef0f5, rgba(0, 0, 255, 0));
   filter: drop-shadow(0 0 6px #d7dff0);
-  animation:  shootingStars 20s cubic-bezier(0.36, 0.55, 0.51, 0.81);
+  animation:  shootingStars 40s cubic-bezier(0.36, 0.55, 0.51, 0.81);
   animation-direction: alternate;
   animation-iteration-count: infinite; 
   animation-fill-mode: forwards;
@@ -209,6 +209,88 @@ main{
    transform: translate3d(90vw, -90vh, 0);
   }
 }
+/* second page (destination) style */
+.current-page{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap:0.5rem;
+}
+.link-name{
+  letter-spacing: 2px;
+}
+.planet-info-holder,.planet-nav-holder{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+/* nav buttons  */
+.planet-name-nav{
+  border: none;
+  background-color: inherit;
+  color: white;
+  padding: 0.6rem;
+  cursor: pointer;
+ }
+.planet-name-nav::after{
+  display: block;
+  content: '';
+  border-bottom: solid 3px rgb(255, 255, 255);
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+.planet-name-nav:hover::after{
+  transform: scaleX(1);
+ }
+ .planet-name-nav:focus::after{
+  transform: scaleX(1);
+ }
+ .planet-name{
+  font-size: 4rem;
+  text-align: center;
+ }
+ .planet-par{
+  letter-spacing: 2px;
+  max-width: 300px;
+  text-align: justify;
+  padding: 1rem;
+ }
+ .about-planet{
+  text-align: justify;
+ }
+ .planet-info-holder{
+  text-align: left;
+ }
+ .distance-info,.travel-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.3rem;
+ }
+ .planet-image{
+    width: 100%;
+    height: 20vh;
+    padding: 1rem;
+    perspective-origin:top left;
+  }
+ .planet{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: rotatePlanet 60s ease-in-out infinite forwards; 
+    }
+ @keyframes rotatePlanet{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+
+ }
+ 
 /* media query for large screen */
 @media (min-width:500px) {
     .home-page-header{
@@ -233,13 +315,26 @@ main{
     main{
       grid-template-columns: 1fr 1fr;
       justify-content: center;
-      padding: 4rem;
+      padding: 3rem;
       gap: 1rem;
+      
     }
     .btn-holder{
       align-self: center;
       justify-self: end;
     }
+    /* destination or second page */
+    .planet-info-holder{
+      display: flex;
+      flex-direction: column;
+      gap:2rem;
+      
+    }
+    .planet-image{
+      flex-grow: 0.5;
+    }
+    
+    
     
 }
 
