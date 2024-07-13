@@ -1,6 +1,4 @@
 import data from "./data.json";
-
-
 //function to draw homepage content
 function homePageSection(ele){
   const template = ` 
@@ -18,7 +16,7 @@ function homePageSection(ele){
    </section>
     <div class="btn-holder">
     <div class="big-circle">
-      <button  aria-label="explore" class="explore-btn">EXPLORE</button>
+      <button  aria-label="explore" class="explore-btn" data-explore-btn >EXPLORE</button>
     </div>
     </div>
 `;
@@ -40,7 +38,36 @@ function chooseImage(ele,number){
   
 }
   
+//function destination page (second page)
+function secondPage(ele){
+  const template = `
+  <section class="planet-info-holder">
+   <section class="current-page-info">
+    <div class="current-page">
+     <span class="link-number" aria-hidden="true">01</span>
+     <div class="link-name">PICK YOUR DESTINATION</div>
+    </div>
+   </section>
+   <div class="planet-image">
+    <div class="planet"></div>
+   </div>
+  </section>
 
+ <section class="planet-nav-holder">
+
+  <nav class="planets-btn-holder">
+    <button class="planet-name-nav" data-nav="0">MOON</button>
+    <button class="planet-name-nav" data-nav="1">MARS</button>
+    <button class="planet-name-nav" data-nav="2">EUROPA</button>
+    <button class="planet-name-nav" data-nav="3">TITAN</button>
+   </nav>
+  <article class="about-planet"></article>
+
+</section>
+ `;
+ ele.textContent = "";
+ ele.innerHTML = template;
+}
 
 function destinationPlanet(ele,number){
   const template = ` 
@@ -61,4 +88,53 @@ function destinationPlanet(ele,number){
   ele.textContent = '';
   ele.innerHTML = template;
 }
-export {homePageSection,destinationPlanet,chooseImage};
+function thirdPage(ele){
+  const template = ` 
+  <section class="crew-image-holder">
+     <div class="crew-image" data-crew-image></div>
+  </section>
+  <section class="crew-info-holder">
+     <section class="current-page-info">
+      <div class="current-page">
+       <span class="link-number" aria-hidden="true">02</span>
+       <div class="link-name">MEET YOUR CREW</div>
+      </div>
+     </section>
+     <div class="person-info">
+       <article class="person-detail-info" data-crew-bio></article>
+       <div class="slider-btn-holder">
+       <button aria-label="crew-member" class="slider-btn"  data-crew="0"></button>
+       <button aria-label="crew-member" class="slider-btn"  data-crew="1"></button>
+       <button aria-label="crew-member" class="slider-btn"  data-crew="2"></button>
+       <button aria-label="crew-member" class="slider-btn"  data-crew="3"></button>
+       
+      </div>
+     </div>
+
+   </section>`;
+   ele.innerHTML = template;
+}
+function personInfo(ele,number){
+  const bioTemplate = `
+    <div class="person-job">${data.crew[number].role}</div>
+    <h1 class="crew-name">${data.crew[number].name}</h1>
+    <p class="crew-bio" data-crew-info>${data.crew[number].bio}</p>
+  `;
+  ele.innerHTML = bioTemplate;
+}
+function personImage(ele,number){
+  const mobileScreen = window.matchMedia("(max-width: 500px)");
+  const largeScreen = window.matchMedia("(min-width:600px)");
+  if(largeScreen.matches === true){
+    const image = require(`${data.crew[number].images.png}`);
+     ele.style.backgroundImage = `url('${image}')`;
+  }
+  else if(mobileScreen.matches === true){
+    const image = require(`${data.crew[number].images.webp}`);
+    ele.style.backgroundImage = `url('${image}')`;
+  }
+
+}
+
+
+export {homePageSection,secondPage,destinationPlanet,chooseImage,thirdPage,personInfo,personImage};
