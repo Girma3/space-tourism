@@ -6,6 +6,7 @@ body{
     background-image: url(./assets/images/home/background-home-desktop.jpg);
     background-repeat: no-repeat;
     width: 100vw;
+    overflow-x: clip;
   }
 ul{
   list-style: none;
@@ -13,10 +14,9 @@ ul{
 a{
   text-decoration: none;
 }
-button{
+ button{
   cursor: pointer;
-}
-
+} 
 .home-page-header{
     display: flex;
     justify-content: space-between;
@@ -211,9 +211,7 @@ main{
   }
 }
 /* second page (destination) style */
-.current-page-info{
-  display: none;
-}
+
 .current-page{
   display: flex;
   align-items: center;
@@ -321,28 +319,29 @@ main{
  .slider-btn-holder{
   grid-area: top;
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
-  padding: 1rem;
-  
- }
+  justify-content: center;
+  }
  .slider-btn{
-  padding: 1rem;
+  padding: 0.5rem;
   border: none;
   aspect-ratio: 1;
   background-color: grey;
   border-radius: 50%;
  }
+ .slider-btn:focus{
+  background-color: white;
+ }
  .person-job{
   font-size: 1.5rem;
   color:aquamarine;
  }
- .crew-image-holder{
-  width: 100%;
+ /* forth and third page image holder,image has same style */
+ .crew-image-holder,.techno-image-holder{
+   width: 100%;
   height: 30vh;
- }
- .crew-image{
+ }  
+ .crew-image,.techno-image{
     height: 100%;
     width: 100%;
     background-size: contain;
@@ -350,6 +349,31 @@ main{
     background-position: center;
  
  }
+ /*fourth page style */
+.technology-info-holder{
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 1.5rem;
+  padding: 1rem;
+
+ }
+ .techno-name{
+  font-size: 2rem;
+ }
+ .techno-image{
+  width: 100%;
+  height: 30vh;
+  background-repeat: no-repeat;
+ }
+ .techno-btn{
+  border: none;
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.techno-btn:focus{
+  background-color: rgb(107, 0, 0);
+}
 
 /* media query for large screen */
 @media (min-width:500px) {
@@ -400,15 +424,26 @@ main{
       flex-grow: 0.5;
     }
     /* third page */
-    .crew-image-holder{
+    /* third and fourth image holder same style */
+    .crew-image-holder,.techno-image-holder{
       grid-area: right;
-     }
+      width: 0;
+      height: 0; 
+    }
      .crew-image{
       position: absolute;
       height: 80%;
       left: 30%;
       bottom: 0;
-      background-position: bottom;
+      z-index: -10;
+     }
+     .techno-image{
+      position: absolute;
+      height: 70%;
+      left: 30%;
+      bottom: 10%;
+      z-index: -10;
+
      }
      .crew-info-holder{
       grid-area: left;
@@ -416,16 +451,54 @@ main{
       width: 50%;
       padding: 1rem;
      }
-    
+    .person-info{
+      padding: 0;
+    }
     .person-detail-info{
       grid-area: top;
       text-align: start;
+      height: 300px;
+      align-content: end;
     }
     .slider-btn-holder{
       grid-area: bottom;
+      justify-self: start;
+      margin-top: 1.5rem;
     }
-    .current-page-info{
-      display: block;
+  
+    /* fourth page style */
+    .techno-image{
+      grid-area: right;
+    }
+    .technology-info-holder{
+      grid-area: left;
+      display: grid;
+      grid-template-areas: "nav title" 
+                           "nav  article";
+    }
+    .techno-btn-holder{
+      grid-area: nav;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+   
+   
+    .title{
+      grid-area: title;
+    }
+    .techno-par{
+      grid-area: article;
+      text-align: start;
+      padding-left: 3rem;
+    }
+    .techno-info{
+      width: 70%;
+      grid-area: article;
+      letter-spacing: 2px;
+      line-height: 2rem;
+  
     }
     
     
