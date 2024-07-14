@@ -1,5 +1,8 @@
 import "./style.css";
-import { homePageSection,secondPage,destinationPlanet,chooseImage, thirdPage,personInfo,personImage } from "./dom-component";
+import { homePageSection,secondPage,destinationPlanet,chooseImage, 
+    thirdPage,personInfo,personImage,
+    fourthPage,technoInfo,chooseTechnoImage
+} from "./dom-component";
 
 
 
@@ -29,10 +32,19 @@ pageNav.addEventListener("click",e=>{
         thirdPage(main);
         const crewArticle = document.querySelector("[data-crew-bio]");
         const imageHolder = document.querySelector("[data-crew-image]");
-        const slideBtn = document.querySelector(`[data-crew="0"]`);
-        personInfo(crewArticle,0);
+        const slideBtn = document.querySelector(`[data-crew="3"]`);
+        personInfo(crewArticle,3);
         slideBtn.focus();
-        personImage(imageHolder,0);
+        personImage(imageHolder,3);
+    }
+    else if(e.target.matches("[data-technology-btn]")){
+        fourthPage(main);
+        const techArticle = document.querySelector("[data-techno-info]");
+        const imageHolder = document.querySelector("[data-techno-image]");
+        const technoTab = document.querySelector(`[data-technology="0"]`);
+        technoInfo(techArticle,0);
+        technoTab.focus();
+        chooseTechnoImage(imageHolder,0);
     }
     
 });
@@ -107,12 +119,36 @@ main.addEventListener('click',(e)=>{
         slideBtn.focus();
         personImage(imageHolder,3);
     }
+    //fourth page event
+    else if(e.target.matches(`[data-technology="0"]`)){
+        const techArticle = document.querySelector("[data-techno-info]");
+        const imageHolder = document.querySelector("[data-techno-image]");
+        const technoTab = document.querySelector(`[data-technology="0"]`);
+        technoInfo(techArticle,0);
+        technoTab.focus();
+        chooseTechnoImage(imageHolder,0);
+    }
+    else if(e.target.matches(`[data-technology="1"]`)){
+        const techArticle = document.querySelector("[data-techno-info]");
+        const imageHolder = document.querySelector("[data-techno-image]");
+        const technoTab = document.querySelector(`[data-technology="1"]`);
+        technoInfo(techArticle,1);
+        technoTab.focus();
+        chooseTechnoImage(imageHolder,1);
+    }
+    else if(e.target.matches(`[data-technology="2"]`)){
+        const techArticle = document.querySelector("[data-techno-info]");
+        const imageHolder = document.querySelector("[data-techno-image]");
+        const technoTab = document.querySelector(`[data-technology="2"]`);
+        technoInfo(techArticle,2);
+        technoTab.focus();
+        chooseTechnoImage(imageHolder,2);
+    }
 });
 
 openMenu.addEventListener('click',()=>{
     if(nav.getAttribute("data-nav-links") === "false"){
         nav.setAttribute("data-nav-links","true");
-       
         closeMenu.style.display = "block";
         openMenu.style.display ="none";
     }
@@ -123,48 +159,37 @@ closeMenu.addEventListener('click',()=>{
         nav.setAttribute("data-nav-links","false");
         openMenu.style.display = "block";
         closeMenu.style.display = "none";
-     
-      
-       
-        
     }
 });
 console.log("hey there fam");
 //nav.setAttribute("data-nav-links","true");
-const mobileScreen = window.matchMedia("(max-width: 500px)");
-const largeScreen = window.matchMedia("(min-width:600px)");
+const mobileScreen = window.matchMedia("(man-width: 500px)");
+const largeScreen = window.matchMedia("(min-width:501px)");
 
 
 largeScreen.addEventListener('change',()=>{
-  
-    nav.setAttribute("data-nav-links","true");
+    //nav.setAttribute("data-nav-links","false");
+    console.log(largeScreen);
     if(largeScreen.matches ===true){
+        nav.setAttribute("data-nav-links","true");
         closeMenu.style.display = 'none';   
         openMenu.style.display = 'none';
     }
-
-});
-
-mobileScreen.addEventListener('change',()=>{
-
-
-    console.log(mobileScreen);
-    if(mobileScreen.matches === true ){
-        openMenu.style.display = "block";
-    
+    else if(largeScreen.matches ===false){
+        console.log(largeScreen,"e");
         nav.setAttribute("data-nav-links","false");
-   
+        openMenu.style.display = "block";
+       
     }
-   
-   
-    
+
 });
 if(largeScreen.matches === true){
     nav.setAttribute("data-nav-links","true");
+    closeMenu.style.display = 'none';   
+    openMenu.style.display = 'none';
 }
-else if(mobileScreen.matches === true){
-    nav.setAttribute("data-nav-links","false");
-
+else if(largeScreen.matches === false){
+    openMenu.style.display = 'block';
 }
 
 
