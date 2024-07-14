@@ -1,23 +1,30 @@
 import "./style.css";
+import "./desktop.css";
 import { homePageSection,secondPage,destinationPlanet,chooseImage, 
     thirdPage,personInfo,personImage,
-    fourthPage,technoInfo,chooseTechnoImage
+    fourthPage,technoInfo,chooseTechnoImage,
+    chooseBgImage
 } from "./dom-component";
-
-
-
 
 const pageNav = document.querySelector("[data-page-nav]");
 const main = document.querySelector('main');
 const openMenu = document.querySelector("[data-open-menu]");
 const closeMenu = document.querySelector("[data-close-menu]");
 const nav = document.querySelector("[data-nav-links]");
-
-
-//homePageSection(main);
+const body = document.body;
+const largeScreen = window.matchMedia("(min-width:501px)");
+chooseBgImage(body,0);
+homePageSection(main);
 pageNav.addEventListener("click",e=>{
     if(e.target.matches("[data-home-btn]")){
         homePageSection(main);
+        chooseBgImage(body,0);
+        //for mobile hide
+        if(largeScreen.matches === false){
+            nav.setAttribute("data-nav-links","false");
+            openMenu.style.display = "block";
+            closeMenu.style.display = "none";
+        }
     }
     else if(e.target.matches("[data-destination-btn]")){
         secondPage(main);
@@ -27,6 +34,13 @@ pageNav.addEventListener("click",e=>{
         btn.focus();
         chooseImage(planetImage,0);
         destinationPlanet(article,0);
+        chooseBgImage(body,1);
+        //hide mobile menu
+        if(largeScreen.matches === false){
+            nav.setAttribute("data-nav-links","false");
+            openMenu.style.display = "block";
+            closeMenu.style.display = "none";
+        }
     }
     else if(e.target.matches("[data-crew-btn]")){
         thirdPage(main);
@@ -36,6 +50,13 @@ pageNav.addEventListener("click",e=>{
         personInfo(crewArticle,3);
         slideBtn.focus();
         personImage(imageHolder,3);
+        chooseBgImage(body,2);
+        //for mobile
+        if(largeScreen.matches === false){
+            nav.setAttribute("data-nav-links","false");
+            openMenu.style.display = "block";
+            closeMenu.style.display = "none";
+        }
     }
     else if(e.target.matches("[data-technology-btn]")){
         fourthPage(main);
@@ -45,6 +66,13 @@ pageNav.addEventListener("click",e=>{
         technoInfo(techArticle,0);
         technoTab.focus();
         chooseTechnoImage(imageHolder,0);
+        chooseBgImage(body,3);
+        //for mobile hide menu
+        if(largeScreen.matches === false){
+            nav.setAttribute("data-nav-links","false");
+            openMenu.style.display = "block";
+            closeMenu.style.display = "none";
+        }
     }
     
 });
@@ -162,9 +190,8 @@ closeMenu.addEventListener('click',()=>{
     }
 });
 console.log("hey there fam");
-//nav.setAttribute("data-nav-links","true");
-const mobileScreen = window.matchMedia("(man-width: 500px)");
-const largeScreen = window.matchMedia("(min-width:501px)");
+
+
 
 
 largeScreen.addEventListener('change',()=>{
