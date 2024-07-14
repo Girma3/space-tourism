@@ -1,5 +1,7 @@
 import data from "./data.json";
+//const m = "destination";
 
+//console.log(data.backgroundImage[0][`${navs[0]}`].mobile);
 //function to draw homepage content
 function homePageSection(ele){
     const template = ` 
@@ -187,16 +189,33 @@ function technoInfo(ele,number){
     ele.textContent = '';
     ele.innerHTML = template;
 }
-//function to pick background image based on the screen size
-function chooseBgImage(ele){
+
+//function to pick background image based on the screen size and page name (navigation used as page name)
+function chooseBgImage(ele,number){
     const largeScreen = window.matchMedia("(min-width:900px)");
     const tabScreen = window.matchMedia("(min-width:500px)");
     const mobileScreen = window.matchMedia("(max-width:500px)");
-    const image = require(`${data.technology[number].images.landscape}`);
-    ele.style.backgroundImage = `url('${image}')`;
+    const pages = ["home","destination","crew","technology"];
+    if(mobileScreen.matches === true){
+       
+        const image = require(`${data.backgroundImage[number][`${pages[number]}`].mobile}`);
+        ele.style.backgroundImage = `url('${image}')`;
+    }
+    else if(largeScreen.matches === true){
+        console.log(pages[number],"l");
+        const image = require(`${data.backgroundImage[number][`${pages[number]}`].desktop}`);
+        ele.style.backgroundImage = `url('${image}')`;
+    }
+    else if(tabScreen.matches === true){
+        console.log(pages[number]);
+        const image = require(`${data.backgroundImage[number][`${pages[number]}`].tablet}`);
+        ele.style.backgroundImage = `url('${image}')`;
+    }
+  
+    
 
 
 }
 
 export {homePageSection,secondPage,destinationPlanet,chooseImage,thirdPage,personInfo,
-    personImage,fourthPage,chooseTechnoImage,technoInfo};
+    personImage,fourthPage,chooseTechnoImage,technoInfo,chooseBgImage};
