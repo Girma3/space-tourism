@@ -3,10 +3,12 @@
     padding: 0;
 }
 body{
-    background-image: url(./assets/images/home/background-home-desktop.jpg);
+    background-color: rgb(0, 0, 0);
+    background-size: cover; 
     background-repeat: no-repeat;
     width: 100vw;
-    overflow: hidden;
+    transition: background 1s ease-in-out;
+    overflow-x: hidden;
   }
 ul{
   list-style: none;
@@ -18,20 +20,22 @@ a{
   cursor: pointer;
 } 
 .home-page-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    padding-top:0.5rem;
-   }
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+ }
    /* homepage link style */
 .home-page-nav > li > button{
     border: none;
     max-width: 150px;
     padding-block: 1.5rem;
-    letter-spacing: 1px;
+    font-size: 0.75rem;
     background-color: inherit;
     color: white;
     text-align: start;
+}
+li > span{
+  font-size: 0.8rem;
 }
 .nav-border{
     width: 100px;
@@ -50,11 +54,9 @@ a{
 .home-page-nav > li{
     position: relative;
     display: flex;
+    gap: 0.2rem;
     align-items: center;
-    
-    gap: .5rem;
-  
-    padding-inline:clamp(1rem,2vw,1.2rem);
+    padding-inline:clamp(0.1rem,1vw,1rem);
     animation: navSlide 1s ease-in-out;
  }
  .home-page-nav{
@@ -64,13 +66,13 @@ a{
  }
  
 .logo{
-    width: 1rem;
+    width: 0.7rem;
     aspect-ratio: 1;
     background-image: url(./assets/images/icons/logo.svg);
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
-    padding: 2rem;
+    padding: 1.5rem;
 
 }
 /* style for mobile nav */
@@ -118,14 +120,15 @@ a{
     }
 }
 /* links holder for mobile nav */
+
 [data-nav-links="true"]{
     opacity: 1;
     display: flex;
     justify-content: center;
     color: white;
     border-radius: 0.2rem;
-    padding-inline: 1rem;
-   }
+    
+    }
 [data-nav-links="false"]{
     opacity: 0;
     display: none;
@@ -160,8 +163,8 @@ main{
  }
 .home-page-section{
   color: white;
-  padding: 2rem;
-}
+  padding-inline: 1rem;
+  }
 .intro-text,.intro-par{
   font-size: 1rem;
   letter-spacing: 1.5px;
@@ -170,8 +173,8 @@ main{
   text-align: center;
 }
 .intro-title{
-  padding-block: 2rem;
-  font-size: 4rem;
+  padding-block: 0.5rem;
+  font-size: 2rem;
   letter-spacing: 1px;
   text-align: center;
 }
@@ -214,7 +217,7 @@ main{
 
 .current-page{
   display: flex;
-  align-items: center;
+ justify-content: center;
   gap:0.5rem;
   padding:1rem ;
 }
@@ -226,6 +229,9 @@ main{
   grid-template-columns: 1fr;
 }
 /* nav buttons  */
+.planets-btn-holder{
+  justify-self: center;
+}
 .planet-name-nav{
   border: none;
   background-color: inherit;
@@ -259,6 +265,7 @@ main{
  }
  .about-planet{
   text-align: justify;
+  padding: 0.3rem;
  }
  .planet-info-holder{
   text-align: left;
@@ -268,7 +275,7 @@ main{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.5rem;
  }
  .planet-image{
     width: 100%;
@@ -360,13 +367,15 @@ main{
  }
  .techno-name{
   font-size: 2rem;
-  padding: 1rem;
+  padding-bottom: 1rem;
  }
- /* .techno-image{
-  width: 100%;
-  height: 30vh;
-  background-repeat: no-repeat;
- } */
+.techno-btn-holder{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-bottom: 0.3rem;
+
+ }
  .techno-btn{
   border: none;
   width: 2rem;
@@ -377,15 +386,29 @@ main{
   background-color: rgb(107, 0, 0);
 }
 
-/* media query for large screen */
+/* media query for tab screen */
 @media (min-width:501px) {
   /* first page */
   .home-page-nav{
     flex-direction: row;
     align-items: center;
     margin-top: 0;
+  }
+  .home-page-nav > li{
+    padding-inline:clamp(1rem,6vw,3rem);
+  }
+ .home-page-section{
+  padding-block: 1rem;
+ }
+ .intro-title{
+  font-size: 3rem;
+ padding-block: 1rem;
+
  }
   /* second page for tab */
+  .current-page{
+    padding: 0.3rem;
+  }
   .slider-btn-holder{
     grid-area: bottom;
   }
@@ -397,25 +420,34 @@ main{
     position: absolute;
     bottom: 0;
     height: 40%;
-
   }
-  
+  .person-info{
+    padding: 0.3rem;
+  }
+  /* third page */
+ 
 }
 @media (min-width:900px) {
   .home-page-section{
     width: 50%;
     grid-area: left;
     justify-self: start;
+    padding-left: 3rem;
+    padding-top: 5rem;
   }
   .btn-holder{
     grid-area: right;
   }
   .big-circle{
-   right: 30%;
+   right: 70%;
+   }
+  .home-page-header{
+    align-items: center;
   }
-    .home-page-header{
-         align-items: center;
-    }
+  .intro-title{
+  padding-block: 2rem;
+  font-size: 3rem;
+  }
    
     .home-page-nav > li{
         flex-direction: row;
@@ -440,12 +472,17 @@ main{
     }
     /* destination or second page */
     .planet-info-holder{
+      grid-area: left;
       display: flex;
       flex-direction: column;
       gap:2rem;
     }
+    .planet-nav-holder{
+      grid-area: right;
+      padding-top: 2rem;
+    }
     .planet-image{
-      flex-grow: 0.5;
+      flex-grow: 1.5;
     }
     /* third page */
     /* third and fourth image holder same style */
@@ -491,6 +528,10 @@ main{
     }
   
     /* fourth page style */
+    .current-page{
+      justify-content: start;
+      padding: 1.5rem;
+    }
     .techno-page{
        padding: 1.5rem;
     }
@@ -500,7 +541,6 @@ main{
     .technology-info-holder{
       width: 60%;
       padding-top: 2rem;
-      padding-left: 4rem;
       display: grid;
       grid-template-areas: "nav title" 
                            "nav  article";
@@ -509,31 +549,26 @@ main{
     }
     .techno-btn-holder{
       grid-area: nav;
-      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       gap: 2rem;
-     
-    }
-   
-   
+      padding-right: 1rem;
+      align-self: start;
+      margin-top: 1rem;
+     }
     .title{
       grid-area: title;
-      padding-left: 3rem;
       text-align: start;
     }
     .techno-par{
       grid-area: article;
       text-align: start;
-      padding-left: 3rem;
-    }
+     }
     .techno-info{
       width: 90%;
-      grid-area: article;
       letter-spacing: 2px;
-      line-height: 2rem;
-      height: 400px;
-  
+      line-height:1.5rem;
+      height: 300px;
     }
     
     
