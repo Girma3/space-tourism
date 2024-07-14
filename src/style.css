@@ -27,8 +27,7 @@ a{
    /* homepage link style */
 .home-page-nav > li > button{
     border: none;
-    max-width: 150px;
-    padding-block: 1.5rem;
+    padding-block: 1rem;
     font-size: 0.75rem;
     background-color: inherit;
     color: white;
@@ -37,35 +36,31 @@ a{
 li > span{
   font-size: 0.8rem;
 }
-.nav-border{
-    width: 100px;
-    height: 1px;
-    position: absolute;
-    left: 30%;
-    bottom: 0;
-    height: 2px;
-    width: 50%;
-    border-bottom: 2px solid rgb(255, 255, 255);
-    display: none;
-   }
-.home-page-nav > li >button:hover ~ .nav-border{
-    display: block;
-}
+
 .home-page-nav > li{
     position: relative;
     display: flex;
     gap: 0.2rem;
     align-items: center;
     padding-inline:clamp(0.1rem,1vw,1rem);
+    border:none;
+    transition: border 200ms ease-in-out;
     animation: navSlide 1s ease-in-out;
  }
+ .home-page-nav > li:hover{
+   border-right:solid 3px rgb(255, 255, 255);
+  }
+
  .home-page-nav{
     display: flex;
     flex-direction: column;
-    margin-top: 3.5rem;
+    margin-top: 3rem;
+    position: absolute;
+    right: 0;
+    background-color: black;
+    padding: 1rem;
  }
- 
-.logo{
+ .logo{
     width: 0.7rem;
     aspect-ratio: 1;
     background-image: url(./assets/images/icons/logo.svg);
@@ -108,6 +103,12 @@ li > span{
 }
 .page-links{
     background-color: hsla(0, 2%, 47%, 0.2);
+   
+    /* height: 100%;
+    position: absolute;
+    right: 0;
+    width: 60%;
+    padding: 1rem; */
 }
 @keyframes navSlide{
     0%{
@@ -355,8 +356,10 @@ main{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
- 
- }
+  }
+  .techno-image{
+    background-size: cover;
+  }
  /*fourth page style */
 .technology-info-holder{
   text-align: center;
@@ -390,12 +393,20 @@ main{
 @media (min-width:501px) {
   /* first page */
   .home-page-nav{
+    position: static;
     flex-direction: row;
     align-items: center;
     margin-top: 0;
+    padding: 0;
+    padding-inline: 0.5rem;
   }
-  .home-page-nav > li{
-    padding-inline:clamp(1rem,6vw,3rem);
+  .home-page-nav > li {
+    border-bottom: solid 2px transparent;
+    padding: 0.5rem;
+  }
+  .home-page-nav > li:hover,.home-nav-btn:focus{
+     border: none;
+     border-bottom: solid 2px rgb(255, 255, 255);
   }
  .home-page-section{
   padding-block: 1rem;
@@ -426,152 +437,5 @@ main{
   }
   /* third page */
  
-}
-@media (min-width:900px) {
-  .home-page-section{
-    width: 50%;
-    grid-area: left;
-    justify-self: start;
-    padding-left: 3rem;
-    padding-top: 5rem;
-  }
-  .btn-holder{
-    grid-area: right;
-  }
-  .big-circle{
-   right: 70%;
-   }
-  .home-page-header{
-    align-items: center;
-  }
-  .intro-title{
-  padding-block: 2rem;
-  font-size: 3rem;
-  }
-   
-    .home-page-nav > li{
-        flex-direction: row;
-        align-items: center;
-    }
-     .open-nav{
-        display: none;
-    }
-    .hr-line{
-        display: block;
-    } 
-    /* content main home page */
-    main{
-      display: grid;
-      grid-template-areas:"left right";
-      align-content: center;
-    }
-    .btn-holder{
-      grid-area: right;
-      align-self: end;
-      justify-self: left;
-    }
-    /* destination or second page */
-    .planet-info-holder{
-      grid-area: left;
-      display: flex;
-      flex-direction: column;
-      gap:2rem;
-    }
-    .planet-nav-holder{
-      grid-area: right;
-      padding-top: 2rem;
-    }
-    .planet-image{
-      flex-grow: 1.5;
-    }
-    /* third page */
-    /* third and fourth image holder same style */
-    .crew-image-holder,.techno-image-holder{
-      grid-area: right;
-      width: 0;
-      height: 0; 
-    }
-     .crew-image{
-      position: absolute;
-      height: 80%;
-      left: 30%;
-      bottom: 0;
-      z-index: -10;
-     }
-     .techno-image{
-      position: absolute;
-      height: 70%;
-      left: 30%;
-      bottom: 10%;
-      z-index: -10;
-
-     }
-     .crew-info-holder{
-      grid-area: left;
-      justify-self: start;
-      width: 50%;
-      padding: 1rem;
-     }
-    .person-info{
-      padding: 0;
-    }
-    .person-detail-info{
-      grid-area: top;
-      text-align: start;
-      height: 300px;
-      align-content: end;
-    }
-    .slider-btn-holder{
-      grid-area: bottom;
-      justify-self: start;
-      margin-top: 1.5rem;
-    }
-  
-    /* fourth page style */
-    .current-page{
-      justify-content: start;
-      padding: 1.5rem;
-    }
-    .techno-page{
-       padding: 1.5rem;
-    }
-     .techno-image{
-      grid-area: right;
-    }
-    .technology-info-holder{
-      width: 60%;
-      padding-top: 2rem;
-      display: grid;
-      grid-template-areas: "nav title" 
-                           "nav  article";
-                           
-                      
-    }
-    .techno-btn-holder{
-      grid-area: nav;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      padding-right: 1rem;
-      align-self: start;
-      margin-top: 1rem;
-     }
-    .title{
-      grid-area: title;
-      text-align: start;
-    }
-    .techno-par{
-      grid-area: article;
-      text-align: start;
-     }
-    .techno-info{
-      width: 90%;
-      letter-spacing: 2px;
-      line-height:1.5rem;
-      height: 300px;
-    }
-    
-    
-    
 }
 
