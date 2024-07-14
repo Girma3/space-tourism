@@ -1,4 +1,5 @@
 import data from "./data.json";
+
 //function to draw homepage content
 function homePageSection(ele){
     const template = ` 
@@ -125,7 +126,7 @@ function personInfo(ele,number){
 }
 function personImage(ele,number){
     const mobileScreen = window.matchMedia("(max-width: 500px)");
-    const largeScreen = window.matchMedia("(min-width:600px)");
+    const largeScreen = window.matchMedia("(min-width:501px)");
     if(largeScreen.matches === true){
         const image = require(`${data.crew[number].images.png}`);
         ele.style.backgroundImage = `url('${image}')`;
@@ -138,20 +139,18 @@ function personImage(ele,number){
 //function to draw fourth page
 function fourthPage(ele){
     const template = `  
+    <section class="techno-page">
     <section class="current-page-info">
     <div class="current-page">
-    <span class="link-number" aria-hidden="true">02</span>
-    <div class="link-name">SPACE LAUNCH 101</div>
+      <span class="link-number" aria-hidden="true">02</span>
+      <div class="link-name">SPACE LAUNCH 101</div>
     </div>
     <div class="techno-image-holder" data-techno-holder>
-      <div class="techno-image" data-techno-image></div>
-    </div>
-  </section>
-    
+    <div class="techno-image" data-techno-image></div>
+  </div>
+    </section>
     <section class="technology-info-holder">
-   
-   
-     <nav class="techno-btn-holder">
+     <nav class="techno-btn-holder" data-techno-btns>
         <button  aria-label="technology-used" class="techno-btn" data-technology="0">1</button>
         <button  aria-label="technology-used" class="techno-btn" data-technology="1">2</button>
         <button  aria-label="technology-used" class="techno-btn" data-technology="2">3</button>
@@ -159,14 +158,16 @@ function fourthPage(ele){
      <div class="title">THE TECHNOLOGY...</div>
       <article class="techno-par" data-techno-info></article>
    
-    </section>`;
+    </section>
+    </section
+  `;
     ele.textContent = '';
     ele.innerHTML = template;
 }
 //function to pick image for technology page based on screen
 function chooseTechnoImage(ele,number){
-    const mobileScreen = window.matchMedia("(max-width: 500px)");
-    const largeScreen = window.matchMedia("(min-width:600px)");
+    const mobileScreen = window.matchMedia("(max-width: 600px)");
+    const largeScreen = window.matchMedia("(min-width:601px)");
     if(largeScreen.matches === true){
         const image = require(`${data.technology[number].images.portrait}`);
         ele.style.backgroundImage = `url('${image}')`;
@@ -186,7 +187,16 @@ function technoInfo(ele,number){
     ele.textContent = '';
     ele.innerHTML = template;
 }
+//function to pick background image based on the screen size
+function chooseBgImage(ele){
+    const largeScreen = window.matchMedia("(min-width:900px)");
+    const tabScreen = window.matchMedia("(min-width:500px)");
+    const mobileScreen = window.matchMedia("(max-width:500px)");
+    const image = require(`${data.technology[number].images.landscape}`);
+    ele.style.backgroundImage = `url('${image}')`;
 
+
+}
 
 export {homePageSection,secondPage,destinationPlanet,chooseImage,thirdPage,personInfo,
     personImage,fourthPage,chooseTechnoImage,technoInfo};
