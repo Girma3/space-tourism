@@ -168,13 +168,12 @@ function fourthPage(ele){
 }
 //function to pick image for technology page based on screen
 function chooseTechnoImage(ele,number){
-    const mobileScreen = window.matchMedia("(max-width: 600px)");
-    const largeScreen = window.matchMedia("(min-width:601px)");
+    const largeScreen = window.matchMedia("(min-width:900px)");
     if(largeScreen.matches === true){
         const image = require(`${data.technology[number].images.portrait}`);
         ele.style.backgroundImage = `url('${image}')`;
     }
-    else if(mobileScreen.matches === true){
+    else if(largeScreen.matches === false){
         const image = require(`${data.technology[number].images.landscape}`);
         ele.style.backgroundImage = `url('${image}')`;
     }
