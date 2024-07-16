@@ -64,7 +64,7 @@ function secondPage(ele){
     <button class="planet-name-nav" data-nav="2">EUROPA</button>
     <button class="planet-name-nav" data-nav="3">TITAN</button>
    </nav>
-  <article class="about-planet"></article>
+  <article class="about-planet" aria-live="polite"></article>
 
 </section>
  `;
@@ -105,7 +105,7 @@ function thirdPage(ele){
    </section>
 
      </section>
-     <div class="person-info">
+     <div class="person-info"  aria-live="polite">
        <article class="person-detail-info" data-crew-bio></article>
        <div class="slider-btn-holder" data-slider-btn>
         <button aria-label="crew-member" class="slider-btn"  data-crew="0" ></button>
@@ -158,7 +158,7 @@ function fourthPage(ele){
         <button  aria-label="technology-used" class="techno-btn" data-technology="2">3</button>
       </nav>
      <div class="title">THE TECHNOLOGY...</div>
-      <article class="techno-par" data-techno-info></article>
+      <article class="techno-par"  aria-live="polite" data-techno-info ></article>
    
     </section>
     </section
@@ -211,10 +211,44 @@ function chooseBgImage(ele,number){
         ele.style.backgroundImage = `url('${image}')`;
     }
   
+}
+//function to add focus style for nav
+function navBtnFocus(number){
+    const ul = document.querySelector('.home-page-nav');
+    const tabScreen = window.matchMedia("(min-width:500px)");
+    const allNav  = [...ul.children];
+    allNav.forEach(nav=>{
+       
+        if(allNav.indexOf(nav) !== number){
+            nav.classList.remove('nav-mobile-focus');
+            nav.classList.remove('nav-tab-focus');
+        }
+        else if(tabScreen.matches === true){
+            nav.classList.add('nav-tab-focus');
+        }
+        else if(tabScreen.matches === false){
+            nav.classList.add('nav-mobile-focus');
+        }
+    });
+}
+//function to add style for slider buttons
+function sliderBtnFocus(number){
+    const sliderBtn = document.querySelectorAll('.slider-btn');
+    const btns  = [...sliderBtn];
+    btns[number].focus();
+    btns.forEach(slider=>{
+        if(btns.indexOf(slider) === number){
+            slider.classList.add("slider-bnt-clicked");
+        }
+        else{
+            slider.classList.remove("slider-bnt-clicked");
+        }
+    });
     
-
-
+    
 }
 
 export {homePageSection,secondPage,destinationPlanet,chooseImage,thirdPage,personInfo,
-    personImage,fourthPage,chooseTechnoImage,technoInfo,chooseBgImage};
+    personImage,fourthPage,chooseTechnoImage,technoInfo,chooseBgImage,
+    navBtnFocus,sliderBtnFocus
+};
