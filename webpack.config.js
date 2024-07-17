@@ -11,7 +11,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             // hash: true,
             title: "space-tourism",
-            favicon: "src/assets/fonts/favicon.ico",
+            favicon: ".src/assets/fonts/favicon.ico",
             template: "./src/template.html",
             chunks: ["index"],
             // filename: "index.html",
@@ -33,7 +33,7 @@ module.exports = {
                 type: "asset/resource",
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif|webp|ico)$/i,
                 //type: 'asset/resource',
                 loader: 'file-loader'
             },
@@ -51,10 +51,6 @@ module.exports = {
                 test: /\.html$/i,
                 loader: "html-loader",
             },
-            {
-                test: /\.ico$/,
-                loader: 'file-loader'
-            }
         ],
     },
 };
