@@ -1,10 +1,10 @@
 import data from "./data.json";
-import crew from "./assets/images/crew/background-crew-desktop.jpg";
+
 function importAll(r) {
     return r.keys().map(r);
 }
 const body = document.body;
-const Homeimages = importAll(require.context('./assets/images/home', true, /\.(png|jpe?g|svg)$/));
+//const Homeimages = importAll(require.context('./assets/images/home', true, /\.(png|jpe?g|svg)$/));
 
 //document.addEventListener('DOMContentLoaded', () => {
 //body.style.backgroundImage = `url("${images[0].default}")`;
@@ -49,7 +49,7 @@ function planetImage(ele,number){
     if(mobileScreen.matches === true){
         ele.style.backgroundImage = `url("${planetImagesTab[number].default}")`;
     }
-    if(largeScreen.matches === true){
+    else if(largeScreen.matches === true){
         ele.style.backgroundImage = `url("${planetLargeImage[number].default}")`;
     }
 }
@@ -128,6 +128,13 @@ function thirdPage(ele){
    </section>`;
     ele.innerHTML = template;
 }
+
+//image order to match json data about person as key and value pair
+const personInfoHashmap = new Map();
+personInfoHashmap.set(3,0);
+personInfoHashmap.set(0,1);
+personInfoHashmap.set(1,2);
+personInfoHashmap.set(2,3);
 function personInfo(ele,number){
     const bioTemplate = `
     <div class="person-job">${data.crew[number].role}</div>
@@ -139,14 +146,18 @@ function personInfo(ele,number){
 function personImage(ele,number){
     const mobileScreen = window.matchMedia("(max-width: 500px)");
     const largeScreen = window.matchMedia("(min-width:501px)");
+    const tabImages = importAll(require.context('./assets/images/crew', true, /\.(webp)$/));
+    const largeImages = importAll(require.context('./assets/images/crew', true, /\.(png)$/));
+    //convert num to match json data
+    number = personInfoHashmap.get(number);
+    console.log(largeImages);
+    if(mobileScreen.matches === true){
+        ele.style.backgroundImage = `url("${tabImages[number].default}")`;
+    }
     if(largeScreen.matches === true){
-        const image = require(`${data.crew[number].images.png}`);
-        ele.style.backgroundImage = `url('${image}')`;
+        ele.style.backgroundImage = `url("${largeImages[number].default}")`;
     }
-    else if(mobileScreen.matches === true){
-        const image = require(`${data.crew[number].images.webp}`);
-        ele.style.backgroundImage = `url('${image}')`;
-    }
+    
 }
 //function to draw fourth page
 function fourthPage(ele){
@@ -176,15 +187,18 @@ function fourthPage(ele){
     ele.innerHTML = template;
 }
 //function to pick image for technology page based on screen
+//order to mach json and image order,0 rep launch,1 rep spaceport, 2 rep space capsule
+const imageOrder = [0 ,2, 1];
 function chooseTechnoImage(ele,number){
     const largeScreen = window.matchMedia("(min-width:900px)");
+    const largeImages = importAll(require.context('./assets/images/technology/portrait-bg', false, /\.(jpg)$/));
+    const tabImages = importAll(require.context('./assets/images/technology/landscape-bg', false, /\.(jpg)$/));
+    number = imageOrder[number];
     if(largeScreen.matches === true){
-        const image = require(`${data.technology[number].images.portrait}`);
-        ele.style.backgroundImage = `url('${image}')`;
+        ele.style.backgroundImage = `url("${largeImages[number].default}")`;
     }
     else if(largeScreen.matches === false){
-        const image = require(`${data.technology[number].images.landscape}`);
-        ele.style.backgroundImage = `url('${image}')`;
+        ele.style.backgroundImage = `url("${tabImages[number].default}")`;
     }
 }
 //function to update paragraph about the technology used

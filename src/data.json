@@ -4,7 +4,7 @@
       "home":{
         "mobile":"./assets/images/home/background-home-mobile.jpg",
         "tablet":"./assets/images/home/background-home-tablet.jpg",
-        "desktop":"src/assets/images/home/background-home-desktop.jpg"
+        "desktop":"./assets/images/home/background-home-desktop.jpg"
       }
     },
      {
