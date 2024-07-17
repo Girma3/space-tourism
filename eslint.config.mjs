@@ -5,6 +5,7 @@ export default [
       semi: "error",
       "prefer-const": "error",
       "no-undef": "off",
+      "indent":"error",
     },
   },
 ];

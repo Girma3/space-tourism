@@ -4,59 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>space tourism</title>
-<script defer src="index.bundle.js?917930465cbd49a569fe"></script></head>
+<link rel="icon" href="favicon-32x32.png?019942fd8f6b2ad48541"><script defer src="index.bundle.js?019942fd8f6b2ad48541"></script></head>
 <body>
   <header class="home-page-header">
     <div class="logo"></div>
     <div aria-hidden="true" class="hr-line"></div>
  
     <nav class="page-links">
+      <div class="mobile-btn">
       <button class="open-nav" aria-label="open-menu" data-open-menu></button> 
       <button class="close-nav" aria-label="close-menu" data-close-menu></button> 
-    <ul class="home-page-nav" data-nav-links="false">
+    </div>
+    <ul class="home-page-nav" data-nav-links="false" data-page-nav>
+     
      <li>
         <span aria-hidden="true">00</span>
-        <button>HOME</button>
-        <div aria-hidden="true" class="nav-border"></div>
+        <button data-home-btn class="home-nav-btn">HOME</button>
+        
        </li>
       <li>
         <span aria-hidden="true">01</span>
-        <button>DESTINATION</button>
-        <div aria-hidden="true" class="nav-border"></div>
+        <button data-destination-btn class="home-nav-btn">DESTINATION</button>
+        
       </li>
       <li >
         <span aria-hidden="true">02</span>
-        <button>CREW</button>
-        <div aria-hidden="true" class="nav-border"></div>
-      </li>
+        <button data-crew-btn class="home-nav-btn">CREW</button>
+       </li>
       <li>
         <span aria-hidden="true">03</span>
-        <button>TECHNOLOGY</button>
-         <div aria-hidden="true" class="nav-border"></div>
+        <button data-technology-btn class="home-nav-btn">TECHNOLOGY</button>
+         
       </li>
     </ul>
   </nav>
 </header>
-  <main class="grid-section">
-    <section class="home-page-section">
-      <div class="intro-text">SO YOU WANT TO TRAVEL TO</div>
-      <h1 class="intro-title">SPACE</h1>
-      <p class="intro-par">Let's face it;if you want to go to space,you might as well
-        genuinely go to outer space and not hover kind of on the
-        edge of it.Well sit back, and relax because we will give you
-        a truly out of this world experience.
-      </p>
-      <div class="star-holder">
-        <div class="star"></div>
-       </div>
-    </section>
-    <div class="btn-holder">
-      <div class="big-circle">
-      <button  aria-label="explore" class="explore-btn">EXPLORE</button>
-    </div>
-    </div>
-   
-  </main>
-  
+  <main class="grid-section" aria-live="polite"></main>
 </body>
 </html>
