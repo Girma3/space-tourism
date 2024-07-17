@@ -28,11 +28,12 @@
       padding: 0;
       flex-direction: row;
       align-items: center;
+      gap:0.5rem;
       padding-inline: clamp(1rem,1vw,1.5rem);
      }
     .home-page-nav > li > span{
       display: block;
-    }
+     }
     .open-nav{
       display: none;
     }
@@ -64,6 +65,7 @@
     }
     .planet-image{
       flex-grow: 1.5;
+      height: 45vh;
     }
     .planet-info{
       display: flex;

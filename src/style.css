@@ -53,8 +53,9 @@ main{
   text-align: start;
   font-family: 'Barlow Condensed';
 }
-li > span{
+.home-page-nav > li > span{
   font-size: 1.2rem;
+  font-weight: 700;
   font-family: 'Barlow Condensed';
 }
 .home-page-nav > li{
@@ -251,7 +252,7 @@ main{
   font-family: 'Barlow Condensed';
   letter-spacing: 2px;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.5rem;
  }
 .link-number{
   display: none;
@@ -322,7 +323,7 @@ main{
  }
  .planet-image{
   width: 100%;
-  height: 45vh;
+  height: 40vh;
   padding: 1rem;
 }
 .planet{
