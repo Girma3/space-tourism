@@ -128,13 +128,7 @@ function thirdPage(ele){
    </section>`;
     ele.innerHTML = template;
 }
-
-//image order to match json data about person as key and value pair
-const personInfoHashmap = new Map();
-personInfoHashmap.set(3,0);
-personInfoHashmap.set(0,1);
-personInfoHashmap.set(1,2);
-personInfoHashmap.set(2,3);
+//function to get info about the person
 function personInfo(ele,number){
     const bioTemplate = `
     <div class="person-job">${data.crew[number].role}</div>
@@ -143,13 +137,15 @@ function personInfo(ele,number){
   `;
     ele.innerHTML = bioTemplate;
 }
+//image order to match json data about person info
+const personImageOrder = [1,2,3,0];
 function personImage(ele,number){
     const mobileScreen = window.matchMedia("(max-width: 500px)");
     const largeScreen = window.matchMedia("(min-width:501px)");
     const tabImages = importAll(require.context('./assets/images/crew', true, /\.(webp)$/));
     const largeImages = importAll(require.context('./assets/images/crew', true, /\.(png)$/));
     //convert num to match json data
-    number = personInfoHashmap.get(number);
+    number = personImageOrder[number];
     console.log(largeImages);
     if(mobileScreen.matches === true){
         ele.style.backgroundImage = `url("${tabImages[number].default}")`;
