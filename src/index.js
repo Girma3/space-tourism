@@ -1,6 +1,6 @@
 import "./style.css";
 import "./desktop.css";
-import { homePageSection,secondPage,destinationPlanet,chooseImage, 
+import { homePageSection,secondPage,destinationPlanet,planetImage, 
     thirdPage,personInfo,personImage,
     fourthPage,technoInfo,chooseTechnoImage,
     chooseBgImage,navBtnFocus,sliderBtnFocus,tabFocus
@@ -12,6 +12,9 @@ const closeMenu = document.querySelector("[data-close-menu]");
 const nav = document.querySelector("[data-nav-links]");
 const body = document.body;
 const largeScreen = window.matchMedia("(min-width:501px)");
+
+
+    
 chooseBgImage(body,0);
 homePageSection(main);
 navBtnFocus(0);
@@ -30,10 +33,10 @@ pageNav.addEventListener("click",e=>{
     else if(e.target.matches("[data-destination-btn]")){
         secondPage(main);
         const article = document.querySelector('.about-planet');
-        const planetImage = document.querySelector('.planet');
+        const imageHolder = document.querySelector('.planet');
         const btn = document.querySelector(`[data-nav="0"]`);
         btn.focus();
-        chooseImage(planetImage,0);
+        planetImage(imageHolder,2); //2 rep moon image
         destinationPlanet(article,0);
         chooseBgImage(body,1);
         //hide mobile menu
@@ -88,29 +91,29 @@ main.addEventListener('click',(e)=>{
         destinationPlanet(article,0);
         navBtnFocus(0);
     }
-    //second page events
+    //second page events 
     else if(e.target.matches(`[data-nav="0"]`)){
         const article = document.querySelector('.about-planet');
-        const planetImage = document.querySelector('.planet');
-        chooseImage(planetImage,0);
+        const imageHolder = document.querySelector('.planet');
+        planetImage(imageHolder,2);
         destinationPlanet(article,0);
     }
     else if(e.target.matches(`[data-nav="1"]`)){
         const article = document.querySelector('.about-planet');
-        const planetImage = document.querySelector('.planet');
-        chooseImage(planetImage,1);
+        const imageHolder = document.querySelector('.planet');
+        planetImage(imageHolder,1); //1 rep mars
         destinationPlanet(article,1);
     }
     else if(e.target.matches(`[data-nav="2"]`)){
         const article = document.querySelector('.about-planet');
-        const planetImage = document.querySelector('.planet');
-        chooseImage(planetImage,2);
+        const imageHolder = document.querySelector('.planet');
+        planetImage(imageHolder,0); //0 rep europa
         destinationPlanet(article,2);
     }
     else if(e.target.matches(`[data-nav="3"]`)){
         const article = document.querySelector('.about-planet');
-        const planetImage = document.querySelector('.planet');
-        chooseImage(planetImage,3);
+        const imageHolder = document.querySelector('.planet');
+        planetImage(imageHolder,3);//3 rep titan
         destinationPlanet(article,3);
     }
     //third page event

@@ -1,4 +1,18 @@
 import data from "./data.json";
+import crew from "./assets/images/crew/background-crew-desktop.jpg";
+function importAll(r) {
+    return r.keys().map(r);
+}
+const body = document.body;
+const Homeimages = importAll(require.context('./assets/images/home', true, /\.(png|jpe?g|svg)$/));
+
+//document.addEventListener('DOMContentLoaded', () => {
+//body.style.backgroundImage = `url("${images[0].default}")`;
+//});
+//body.style.backgroundImage = `url("${crew}")`;
+
+// Usage:
+
 
 //function to draw homepage content
 function homePageSection(ele){
@@ -24,17 +38,19 @@ function homePageSection(ele){
     ele.textContent = '';
     ele.innerHTML = template;
 }
-//function choose image from json based on the screen width 
-function chooseImage(ele,number){
+//function choose planet image
+function planetImage(ele,number){
     const mobileScreen = window.matchMedia("(max-width: 500px)");
     const largeScreen = window.matchMedia("(min-width:501px)");
-    if(largeScreen.matches === true){
-        const image = require(`${data.destinations[number].images.png}`);
-        ele.style.backgroundImage = `url('${image}')`;
+    //webp for small screen and png for large screen
+    //image stored in this order europa,mars,moon,titan 
+    const planetImagesTab = importAll(require.context('./assets/images/destination', false, /\.(webp)$/));
+    const planetLargeImage = importAll(require.context('./assets/images/destination', false, /\.(png)$/));
+    if(mobileScreen.matches === true){
+        ele.style.backgroundImage = `url("${planetImagesTab[number].default}")`;
     }
-    else if(mobileScreen.matches === true){
-        const image = require(`${data.destinations[number].images.webp}`);
-        ele.style.backgroundImage = `url('${image}')`;
+    if(largeScreen.matches === true){
+        ele.style.backgroundImage = `url("${planetLargeImage[number].default}")`;
     }
 }
 //function destination page (second page)
@@ -186,18 +202,25 @@ function chooseBgImage(ele,number){
     const largeScreen = window.matchMedia("(min-width:900px)");
     const tabScreen = window.matchMedia("(min-width:500px)");
     const mobileScreen = window.matchMedia("(max-width:500px)");
-    const pages = ["home","destination","crew","technology"];
-    if(mobileScreen.matches === true){
-        const image = require(`${data.backgroundImage[number][`${pages[number]}`].mobile}`);
-        ele.style.backgroundImage = `url(src'${image}')`;
-    }
-    else if(largeScreen.matches === true){
-        const image = require(`${data.backgroundImage[number][`${pages[number]}`].desktop}`);
-        ele.style.backgroundImage = `url('${image}')`;
-    }
-    else if(tabScreen.matches === true){
-        const image = require(`${data.backgroundImage[number][`${pages[number]}`].tablet}`);
-        ele.style.backgroundImage = `url('${image}')`;
+    pickBg(number);
+    
+    //function to pick background image based on screen size
+    function pickBg(number){
+        const homeImages = importAll(require.context('./assets/images/home', false, /\.(png|jpe?g|svg)$/));
+        const destinationImages = importAll(require.context('./assets/images/destination-bg', false, /\.(png|jpe?g|svg)$/));
+        const crewImages = importAll(require.context('./assets/images/crew-bg', false, /\.(png|jpe?g|svg)$/));
+        const technoImages = importAll(require.context('./assets/images/techno-bg', false, /\.(png|jpe?g|svg)$/));
+        const imagesTab = [homeImages,destinationImages,crewImages,technoImages];
+        //images stored in desktop, mobile, tab(0,1,2) order
+        if(mobileScreen.matches === true){
+            ele.style.backgroundImage = `url("${imagesTab[number][1].default}")`;
+        }
+        else if(largeScreen.matches === true){
+            ele.style.backgroundImage = `url("${imagesTab[number][0].default}")`;
+        }
+        else if(tabScreen.matches === true){
+            ele.style.backgroundImage = `url("${imagesTab[number][2].default}")`;
+        }
     }
 }
 //function to add focus style for nav
@@ -247,7 +270,7 @@ function tabFocus(number){
     });
 }
 
-export {homePageSection,secondPage,destinationPlanet,chooseImage,thirdPage,personInfo,
+export {homePageSection,secondPage,destinationPlanet,planetImage,thirdPage,personInfo,
     personImage,fourthPage,chooseTechnoImage,technoInfo,chooseBgImage,
     navBtnFocus,sliderBtnFocus,tabFocus
 };
