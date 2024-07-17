@@ -1,4 +1,3 @@
-
 @media (min-width:900px) {
     .home-page-section{
       width: 50%;
@@ -12,137 +11,150 @@
     }
     .big-circle{
      right: 70%;
-     }
+    }
     .home-page-header{
+      padding: 1rem;
       align-items: center;
     }
     .intro-title{
-    padding-block: 2rem;
-    font-size: 3rem;
+      font-size: 5rem;
     }
-     
-      .home-page-nav > li{
-          flex-direction: row;
-          align-items: center;
-      }
-       .open-nav{
-          display: none;
-      }
-      .hr-line{
-          display: block;
-      } 
-      /* content main home page */
-      main{
-        display: grid;
-        grid-template-areas:"left right";
-        align-content: center;
-      }
-      .btn-holder{
-        grid-area: right;
-        align-self: end;
-        justify-self: left;
-      }
-      /* destination or second page */
-      .planet-info-holder{
-        grid-area: left;
-        display: flex;
-        flex-direction: column;
-        gap:2rem;
-      }
-      .planet-nav-holder{
-        grid-area: right;
-        padding-top: 2rem;
-      }
-      .planet-image{
-        flex-grow: 1.5;
-      }
-      /* third page */
-      /* third and fourth image holder same style */
-      .crew-image-holder,.techno-image-holder{
-        grid-area: right;
-        width: 0;
-        height: 0; 
-      }
-       .crew-image{
-        position: absolute;
-        height: 80%;
-        left: 30%;
-        bottom: 0;
-        z-index: -10;
-       }
-       .techno-image{
-        position: absolute;
-        height: 60%;
-        left: 30%;
-        bottom: 10%;
-        z-index: -10;
-  
-       }
-       .crew-info-holder{
-        grid-area: left;
-        justify-self: start;
-        width: 50%;
-        padding: 1rem;
-       }
-      .person-info{
-        padding: 0;
-      }
-      .person-detail-info{
-        grid-area: top;
-        text-align: start;
-        height: 300px;
-        align-content: end;
-      }
-      .slider-btn-holder{
-        grid-area: bottom;
-        justify-self: start;
-        margin-top: 1.5rem;
-      }
+    .home-page-nav{
+      margin-left: 0;
+      padding-inline: clamp(0.3rem,1vw,0.5rem);
+      gap: 1rem;
+    }
+    .home-page-nav > li{
+      padding: 0;
+      flex-direction: row;
+      align-items: center;
+      padding-inline: clamp(1rem,1vw,1.5rem);
+     }
+    .home-page-nav > li > span{
+      display: block;
+    }
+    .open-nav{
+      display: none;
+    }
+    .hr-line{
+      display: block;
+      z-index: 20;
+    } 
+    /* content main home page */
+    main{
+      display: grid;
+      grid-template-areas:"left right";
+      align-content: center;
+    }
+    .btn-holder{
+      grid-area: right;
+      align-self: end;
+      justify-self: left;
+    }
+    /* destination or second page */
+    .planet-info-holder{
+      grid-area: left;
+      display: flex;
+      flex-direction: column;
+      gap:2rem;
+    }
+    .planet-nav-holder{
+      grid-area: right;
+      padding-top: 2rem;
+    }
+    .planet-image{
+      flex-grow: 1.5;
+    }
+    .planet-info{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
     
-      /* fourth page style */
-      .current-page{
-        justify-content: start;
-        padding: 1.5rem;
-      }
-      .techno-page{
-         padding: 1.5rem;
-      }
-       .techno-image{
-        grid-area: right;
-      }
-      .technology-info-holder{
-        width: 60%;
-        padding-top: 2rem;
-        display: grid;
-        grid-template-areas: "nav title" 
-                             "nav  article";
-                             
-                        
-      }
-      .techno-btn-holder{
-        grid-area: nav;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        padding-right: 1rem;
-        align-self: start;
-        margin-top: 1rem;
-       }
-       .techno-image{
-        background-size: contain;
-       }
-      .title{
-        grid-area: title;
-        text-align: start;
-      }
-      .techno-par{
-        grid-area: article;
-        text-align: start;
-       }
-      .techno-info{
-        width: 90%;
-        letter-spacing: 2px;
-        line-height:1.5rem;
-        height: 300px;
-      }
+    /* third page */
+    /* third and fourth image holder same style */
+    .crew-image-holder,.techno-image-holder{
+      grid-area: right;
+      width: 0;
+      height: 0; 
     }
+    .crew-image{
+      position: absolute;
+      height: 80%;
+      width: 40%;
+      right: 0;
+      bottom: -5%;
+      z-index: -10;
+    }
+    .techno-image {
+      position: absolute;
+      height: 70%;
+      right: 1%;
+      width: 40%;
+      bottom: 10%;
+      z-index: -10;
+    }
+    .crew-info-holder{
+      grid-area: left;
+      justify-self: start;
+      width: 50%;
+      padding-left: 2rem;
+     }
+    .person-info{
+      padding: 0;
+    }
+    .person-detail-info{
+      grid-area: top;
+      text-align: start;
+      height: 300px;
+      align-content: end;
+    }
+    .slider-btn-holder{
+      grid-area: bottom;
+      justify-self: start;
+      margin-top: 1.5rem;
+    }
+    /* fourth page style */
+    .current-page{
+      justify-content: start;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+    .techno-page{
+        padding: 1.5rem;
+    }
+      .techno-image{
+      grid-area: right;
+    }
+    .technology-info-holder{
+      width: 60%;
+      padding-top: 2rem;
+      display: grid;
+      grid-template-areas: "nav title" 
+                            "nav  article";
+    }
+    .techno-btn-holder{
+      grid-area: nav;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-right: 1rem;
+      align-self: start;
+      margin-top: 1rem;
+    }
+    .title{
+      grid-area: title;
+      text-align: start;
+      padding:0.5rem ;
+    }
+    .techno-par{
+      grid-area: article;
+      text-align: start;
+      }
+    .techno-info{
+      width: 90%;
+      letter-spacing: 2px;
+      line-height:1.5rem;
+      height: 300px;
+    }
+}
