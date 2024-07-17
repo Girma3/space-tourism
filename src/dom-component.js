@@ -1,7 +1,5 @@
 import data from "./data.json";
-//const m = "destination";
 
-//console.log(data.backgroundImage[0][`${navs[0]}`].mobile);
 //function to draw homepage content
 function homePageSection(ele){
     const template = ` 
@@ -38,9 +36,7 @@ function chooseImage(ele,number){
         const image = require(`${data.destinations[number].images.webp}`);
         ele.style.backgroundImage = `url('${image}')`;
     }
-  
 }
-  
 //function destination page (second page)
 function secondPage(ele){
     const template = `
@@ -55,9 +51,7 @@ function secondPage(ele){
     <div class="planet"></div>
    </div>
   </section>
-
- <section class="planet-nav-holder">
-
+  <section class="planet-nav-holder">
   <nav class="planets-btn-holder">
     <button class="planet-name-nav" data-nav="0">MOON</button>
     <button class="planet-name-nav" data-nav="1">MARS</button>
@@ -159,7 +153,6 @@ function fourthPage(ele){
       </nav>
      <div class="title">THE TECHNOLOGY...</div>
       <article class="techno-par"  aria-live="polite" data-techno-info ></article>
-   
     </section>
     </section
   `;
@@ -177,7 +170,6 @@ function chooseTechnoImage(ele,number){
         const image = require(`${data.technology[number].images.landscape}`);
         ele.style.backgroundImage = `url('${image}')`;
     }
-
 }
 //function to update paragraph about the technology used
 function technoInfo(ele,number){
@@ -196,21 +188,17 @@ function chooseBgImage(ele,number){
     const mobileScreen = window.matchMedia("(max-width:500px)");
     const pages = ["home","destination","crew","technology"];
     if(mobileScreen.matches === true){
-       
         const image = require(`${data.backgroundImage[number][`${pages[number]}`].mobile}`);
         ele.style.backgroundImage = `url('${image}')`;
     }
     else if(largeScreen.matches === true){
-        console.log(pages[number],"l");
         const image = require(`${data.backgroundImage[number][`${pages[number]}`].desktop}`);
         ele.style.backgroundImage = `url('${image}')`;
     }
     else if(tabScreen.matches === true){
-        console.log(pages[number]);
         const image = require(`${data.backgroundImage[number][`${pages[number]}`].tablet}`);
         ele.style.backgroundImage = `url('${image}')`;
     }
-  
 }
 //function to add focus style for nav
 function navBtnFocus(number){
@@ -218,7 +206,6 @@ function navBtnFocus(number){
     const tabScreen = window.matchMedia("(min-width:500px)");
     const allNav  = [...ul.children];
     allNav.forEach(nav=>{
-       
         if(allNav.indexOf(nav) !== number){
             nav.classList.remove('nav-mobile-focus');
             nav.classList.remove('nav-tab-focus');
@@ -231,24 +218,36 @@ function navBtnFocus(number){
         }
     });
 }
-//function to add style for slider buttons
+//function to add style for slider buttons page three
 function sliderBtnFocus(number){
     const sliderBtn = document.querySelectorAll('.slider-btn');
-    const btns  = [...sliderBtn];
-    btns[number].focus();
-    btns.forEach(slider=>{
-        if(btns.indexOf(slider) === number){
-            slider.classList.add("slider-bnt-clicked");
+    const btnArray  = [...sliderBtn];
+    btnArray[number].focus();
+    btnArray.forEach(slider=>{
+        if(btnArray.indexOf(slider) !== number){
+            slider.classList.remove("slider-btn-clicked");
         }
         else{
-            slider.classList.remove("slider-bnt-clicked");
+            slider.classList.add("slider-btn-clicked");
         }
     });
-    
-    
+}
+//function to add focus style for page four buttons
+function tabFocus(number){
+    const btns = document.querySelectorAll(".techno-btn");
+    const btnArray = [...btns];
+    btnArray[number].focus();
+    btnArray.forEach(btn=>{
+        if(btnArray.indexOf(btn) !== number){
+            btn.classList.remove("techno-btn-clicked");
+        }
+        else{
+            btn.classList.add("techno-btn-clicked");
+        }
+    });
 }
 
 export {homePageSection,secondPage,destinationPlanet,chooseImage,thirdPage,personInfo,
     personImage,fourthPage,chooseTechnoImage,technoInfo,chooseBgImage,
-    navBtnFocus,sliderBtnFocus
+    navBtnFocus,sliderBtnFocus,tabFocus
 };
