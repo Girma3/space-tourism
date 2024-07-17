@@ -87,7 +87,7 @@ main.addEventListener('click',(e)=>{
         const planetImage = document.querySelector('.planet');
         const btn = document.querySelector(`[data-nav="0"]`);
         btn.focus();
-        chooseImage(planetImage,0);
+        planetImage(planetImage,0);
         destinationPlanet(article,0);
         navBtnFocus(0);
     }
@@ -117,7 +117,6 @@ main.addEventListener('click',(e)=>{
         destinationPlanet(article,3);
     }
     //third page event
-  
     if(e.target.matches(`[data-crew="0"]`)){
         const crewArticle = document.querySelector("[data-crew-bio]");
         const imageHolder = document.querySelector("[data-crew-image]");

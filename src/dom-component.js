@@ -1,19 +1,8 @@
 import data from "./data.json";
-
+//function to import image using require.context
 function importAll(r) {
     return r.keys().map(r);
 }
-const body = document.body;
-//const Homeimages = importAll(require.context('./assets/images/home', true, /\.(png|jpe?g|svg)$/));
-
-//document.addEventListener('DOMContentLoaded', () => {
-//body.style.backgroundImage = `url("${images[0].default}")`;
-//});
-//body.style.backgroundImage = `url("${crew}")`;
-
-// Usage:
-
-
 //function to draw homepage content
 function homePageSection(ele){
     const template = ` 
@@ -146,14 +135,12 @@ function personImage(ele,number){
     const largeImages = importAll(require.context('./assets/images/crew', true, /\.(png)$/));
     //convert num to match json data
     number = personImageOrder[number];
-    console.log(largeImages);
     if(mobileScreen.matches === true){
         ele.style.backgroundImage = `url("${tabImages[number].default}")`;
     }
     if(largeScreen.matches === true){
         ele.style.backgroundImage = `url("${largeImages[number].default}")`;
     }
-    
 }
 //function to draw fourth page
 function fourthPage(ele){
