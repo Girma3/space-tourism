@@ -9,12 +9,12 @@ module.exports = {
     devtool: "inline-source-map",
     plugins: [
         new HtmlWebpackPlugin({
-            hash: true,
+            // hash: true,
             title: "space-tourism",
-            favicon: "./src/assets/fonts/favicon-32x32.png",
+            favicon: "src/assets/fonts/favicon.ico",
             template: "./src/template.html",
             chunks: ["index"],
-            filename: "index.html",
+            // filename: "index.html",
         }),
     ],
     output: {
@@ -34,7 +34,8 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
-                type: 'asset/resource',
+                //type: 'asset/resource',
+                loader: 'file-loader'
             },
             {
                 test: /\.(?:js|mjs|cjs)$/,
@@ -50,6 +51,10 @@ module.exports = {
                 test: /\.html$/i,
                 loader: "html-loader",
             },
+            {
+                test: /\.ico$/,
+                loader: 'file-loader'
+            }
         ],
     },
 };
