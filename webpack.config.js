@@ -11,10 +11,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             // hash: true,
             title: "space-tourism",
-            favicon: ".src/assets/fonts/favicon.ico",
+            favicon: "src/assets/fonts/favicon.ico",
             template: "./src/template.html",
             chunks: ["index"],
-            // filename: "index.html",
+            filename: "index.html",
         }),
     ],
     output: {
