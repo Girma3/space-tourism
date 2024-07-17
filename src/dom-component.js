@@ -27,7 +27,7 @@ function homePageSection(ele){
 //function choose image from json based on the screen width 
 function chooseImage(ele,number){
     const mobileScreen = window.matchMedia("(max-width: 500px)");
-    const largeScreen = window.matchMedia("(min-width:600px)");
+    const largeScreen = window.matchMedia("(min-width:501px)");
     if(largeScreen.matches === true){
         const image = require(`${data.destinations[number].images.png}`);
         ele.style.backgroundImage = `url('${image}')`;
