@@ -189,7 +189,7 @@ function chooseBgImage(ele,number){
     const pages = ["home","destination","crew","technology"];
     if(mobileScreen.matches === true){
         const image = require(`${data.backgroundImage[number][`${pages[number]}`].mobile}`);
-        ele.style.backgroundImage = `url('${image}')`;
+        ele.style.backgroundImage = `url(src'${image}')`;
     }
     else if(largeScreen.matches === true){
         const image = require(`${data.backgroundImage[number][`${pages[number]}`].desktop}`);
