@@ -29,12 +29,13 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![desktop-size](./src/assets/images/large-size.jpg)
+![mobile-size](./src/assets/images/mobile-size.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL:(https://github.com/Girma3/space-tourism)
+- Live Site URL: (https://girma3.github.io/space-tourism/)
 
 ## My process
 
@@ -47,8 +48,8 @@ Users should be able to:
 - Javascript
 - Mobile-first workflow
 ### What I learned
-I learned about aria-live,reduce motion in css and using media query in css and js to serve different size images.
-
+- I learned about aria-live,reduce motion in css and using media query in css and js to serve different size    images.
+- using require.context to load images in webpack.
 ### Continued development
 I want to learn more on how  to build  complex layout with animation .
 
