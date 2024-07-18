@@ -14,7 +14,7 @@ const body = document.body;
 const largeScreen = window.matchMedia("(min-width:501px)");
 
 
-    
+
 chooseBgImage(body,0);
 homePageSection(main);
 navBtnFocus(0);
@@ -84,10 +84,10 @@ main.addEventListener('click',(e)=>{
     if(e.target.matches("[data-explore-btn]")){
         secondPage(main);
         const article = document.querySelector('.about-planet');
-        const planetImage = document.querySelector('.planet');
+        const imageHolder = document.querySelector('.planet');
         const btn = document.querySelector(`[data-nav="0"]`);
         btn.focus();
-        planetImage(planetImage,0);
+        planetImage(imageHolder,2);
         destinationPlanet(article,0);
         navBtnFocus(0);
     }

@@ -3,6 +3,13 @@ import data from "./data.json";
 function importAll(r) {
     return r.keys().map(r);
 }
+const logo = document.querySelector('.logo');
+const logoSvg = importAll(require.context('./assets/images/icons/', false, /\.(svg)$/));
+const openMenu = document.querySelector("[data-open-menu]");
+const closeMenu = document.querySelector("[data-close-menu]");
+logo.style.backgroundImage =`url("${logoSvg[2].default}")`;
+openMenu.style.backgroundImage =`url("${logoSvg[1].default}")`;
+closeMenu.style.backgroundImage =`url("${logoSvg[0].default}")`;
 //function to draw homepage content
 function homePageSection(ele){
     const template = ` 

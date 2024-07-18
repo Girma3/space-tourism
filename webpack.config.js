@@ -30,11 +30,11 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: "asset/resource",
+               
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif|webp|)$/i,
-                loader: 'file-loader'
+                loader:"file-loader",
             },
             {
                 test: /\.(?:js|mjs|cjs)$/,

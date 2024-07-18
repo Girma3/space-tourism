@@ -95,7 +95,6 @@ main{
 .logo{
   width: 0.7rem;
   aspect-ratio: 1;
-  background-image: url(./assets/images/icons/logo.svg);
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
@@ -114,7 +113,7 @@ main{
   background-repeat: no-repeat;
   background-position: center;
   border: none;
-  }
+}
 .open-nav{
   background-image: url(./assets/images/icons/icon-hamburger.svg);
 }
