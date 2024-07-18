@@ -89,7 +89,7 @@ main.addEventListener('click',(e)=>{
         btn.focus();
         planetImage(imageHolder,2);
         destinationPlanet(article,0);
-        navBtnFocus(0);
+        navBtnFocus(1);
     }
     //second page events 
     else if(e.target.matches(`[data-nav="0"]`)){
